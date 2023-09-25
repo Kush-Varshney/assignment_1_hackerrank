@@ -1,0 +1,39 @@
+import java.util.Scanner;
+public class Main {
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n1 = sc.nextInt();
+        int[] A1 = new int[n1];
+        for (int i = 0; i < n1; i++) {
+            A1[i] = sc.nextInt();
+        }
+        int n2 = sc.nextInt();
+        int[] A2 = new int[n2];
+        for (int i = 0; i < n2; i++) {
+            A2[i] = sc.nextInt();
+        }
+        int maxSize = Math.max(n1, n2);
+        int[] output = new int[maxSize + 1];
+        int carry = 0;
+        int indexA1 = n1 - 1;
+        int indexA2 = n2 - 1;
+        int indexOutput = maxSize;
+        while (indexOutput >= 0) {
+            int sum = carry;
+            if (indexA1 >= 0) {
+                sum += A1[indexA1];
+                indexA1--;
+            }
+            if (indexA2 >= 0) {
+                sum += A2[indexA2];
+                indexA2--;
+            }
+            output[indexOutput] = sum % 10;
+            carry = sum / 10;
+            indexOutput--;
+        }
+        for (int i = 0; i <= maxSize; i++) {
+            System.out.print(output[i] + " ");
+        }
+    }
+}
