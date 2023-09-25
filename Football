@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String a =sc.next();
+        int countone=0;
+        int countzero=0;
+        for(int i=0;i<a.length();i++){
+            char c=a.charAt(i);
+            if(c=='1'){
+                countone++;
+                countzero=0;
+            }
+            else{
+                countzero++;
+                countone=0;
+            }
+            if(countzero>=7||countone>=7){
+                System.out.println("YES");
+                return;
+            }
+        }
+        System.out.println("NO");
+    }
+}
