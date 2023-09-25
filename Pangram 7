@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine(); 
+        String input = sc.nextLine();
+
+        if (isPangram(input)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+
+    public static boolean isPangram(String input) {
+       
+        boolean[] present = new boolean[26]; 
+
+        
+        for (int i = 0; i < input.length(); i++) {
+            char c = Character.toLowerCase(input.charAt(i)); 
+            if ('a' <= c && c <= 'z') {
+               
+                present[c - 'a'] = true;
+            }
+        }
+
+        
+        for (boolean letterPresent : present) {
+            if (!letterPresent) {
+                return false; 
+            }
+        }
+
+        return true; 
+    }
+}
