@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String guestName = sc.nextLine();  
+        String hostName = sc.nextLine();   
+        String letters = sc.nextLine();
+        guestName = guestName.replaceAll("\\s", "").toUpperCase();
+        hostName = hostName.replaceAll("\\s", "").toUpperCase();
+        letters = letters.replaceAll("\\s", "").toUpperCase();
+        String names = guestName + hostName;
+        int[] counts = new int[26];
+        for (char c : names.toCharArray()) {
+            counts[c - 'A']++;
+        }
+        for (char c : letters.toCharArray()) {
+            int index = c - 'A';
+            counts[index]--;
+            if (counts[index] < 0) {
+                System.out.println("NO");
+                return;
+            }
+        }
+        for (int count : counts) {
+            if (count != 0) {
+                System.out.println("NO");
+                return;
+            }
+        }
+        System.out.println("YES");
+    }
+}
